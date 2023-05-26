@@ -11,3 +11,4 @@ first time learn nestjs
 5. validator and transformer validator
 6. typeorm
 7. yarn
+8. nodejs version: 18.15.0
