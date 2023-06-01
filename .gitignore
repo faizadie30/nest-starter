@@ -36,3 +36,7 @@ lerna-debug.log*
 
 # ENV
 .env
+
+# build from nestjs
+/dist
+dist

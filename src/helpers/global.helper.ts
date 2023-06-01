@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import '../../config/env';
+import * as crypto from 'crypto';
 
 @Injectable()
 export class GlobalHelper {
@@ -50,5 +51,23 @@ export class GlobalHelper {
       currentPage: page,
       totalPages,
     };
+  }
+
+  createCode(): any {
+    let code = '';
+
+    while (code.length < 5) {
+      code += Math.floor(Math.random() * 15);
+    }
+
+    return code;
+  }
+
+  createToken(...data: any) {
+    const delimiter = ':';
+    return crypto
+      .createHash('sha256')
+      .update(process.env.ACCESS_TOKEN_KEY + delimiter + data.join(delimiter))
+      .digest('hex');
   }
 }

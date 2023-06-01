@@ -1,35 +1,28 @@
 import {
   Column,
   CreateDateColumn,
-  DeleteDateColumn,
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 
 @Entity()
-export class User {
+export class Verify {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  full_name: string;
+  user_id: number;
 
-  @Column({ unique: true })
-  email: string;
+  @Column({ type: 'text', nullable: true })
+  verification_code: string;
 
-  @Column({ unique: true })
-  username: string;
-
-  @Column()
-  password: string;
+  @Column({ type: 'varchar' })
+  expires_at: string;
 
   @CreateDateColumn()
   created_at: Date;
 
   @UpdateDateColumn()
   updated_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at: Date;
 }
